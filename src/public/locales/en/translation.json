@@ -1,0 +1,113 @@
+{
+    "form": {
+        "invoice_number": "Order payment",
+        "amount": "Total amount",
+        "error_code": "Error code",
+        "pan": "Card number",
+        "mm": "MM",
+        "yy": "YY",
+        "cvc": "CVC",
+        "description": "Description",
+        "full_name": "Name on card",
+        "to_save_card": "Save card",
+        "un_save_card": "Discard card",
+        "saved_cards": "Saved cards",
+        "cancel": "Cancel",
+        "submit": "Pay",
+        "bind": "Link the card",
+        "enterData": "Enter your card details",
+        "buy_with": "Buy with",
+        "tg": "KZT",
+        "choose_card": "Choose card",
+        "pay_with_another_card": "Pay with another card",
+        "payout_with_another_card": "Payout with another card",
+        "card_forget": "Forget card",
+        "yes": "Yes",
+        "no": "No",
+        "public_offer": "By performing the actions on the payment page, you confirm that you have ",
+        "public_offer_link_text": "read and agree to the terms of service",
+        "public_offer_end": ".",
+        "tarlan_payments": "TARLAN PAYMENTS LLP",
+        "refund_amount": "Refund amount",
+        "card_verify": "For additional verification of the card, enter the amount that we debited and returned from you",
+        "send_amount": "Send",
+        "getPayout": "To get payout",
+        "amountToReceive": "Amount to receive"
+    },
+    "mfo": {
+        "invoice_number": "Order payment",
+        "total_sum": "Total amount",
+        "commission": "PO commission",
+        "payment_sum": "Payment sum"
+    },
+    "check": {
+        "order": "Order",
+        "status_success": "Payment completed!",
+        "sum": "Sum",
+        "commission": "Commission",
+        "merchant": "Merchant",
+        "email": "E-mail",
+        "masked_pan": "Card number",
+        "datetime": "Date/time",
+        "phone_number": "Phone number",
+        "type": "Type",
+        "pay_in": "Replenishment",
+        "pay_out": "Pay",
+        "total": "Total",
+        "thanks": "Thanks!",
+        "back_to_site": "Back to site",
+        "download": "Download check",
+        "method": "Payment method",
+        "card_linked": "The card is successfully linked!",
+        "security_info": "All data is stored encrypted."
+    },
+    "p2p": {
+        "formTitle": "For transfer use the form:",
+        "from": "From",
+        "to": "To",
+        "transfer": "Transfer",
+        "success": "Transfer successfully completed!",
+        "paymentId": "Payment number",
+        "amount": "Amount",
+        "commission": "Сommission",
+        "sender": "Sender",
+        "recipient": "Recipient",
+        "createdDate": "Date"
+    },
+    "info": {
+        "order": "Order",
+        "error_code": "Error code",
+        "reason": "Reason",
+        "in_process": "Payment is in progress",
+        "with_error": "Payment failed",
+        "back_to_site": "Back to site"
+    },
+    "questionTip": {
+        "title": "For security ensuring:",
+        "first": "1) You can save up to 5 cards",
+        "second": "2) Preservation time of cards is limited",
+        "third": "3) Saved cards could transfer no more than 20 payments"
+    },
+    "validation": {
+        "cardNumber": "Сard number is entered incorrectly",
+        "month": "Card validity period for a month is entered incorrectly",
+        "year": "Card validity period for a year is entered incorrectly",
+        "fullname": "Fullname is entered incorrectly",
+        "cvc": "Cvc is entered incorrectly",
+        "required": "Please, fill in the data",
+        "errorData": "Data is entered incorrectly",
+        "kaspiLimit": "Make sure that your card has access to internet payments and then press pay."
+    },
+    "errors": {
+        "systemError": "System error"
+    },
+    "applepay": {
+        "commonError": "Apple Pay error",
+        "notAvailable": "This payment method is available only for Apple devices with an active ApplePay function",
+        "shouldAddCard": "Добавьте карты в Apple Pay, чтобы совершать покупки на этом Mac"
+    },
+    "warning":{
+        "title":"Please check if you have <strong>enough funds to pay</strong> online by Kaspi Gold.",
+        "button":"Clear"
+    }
+}

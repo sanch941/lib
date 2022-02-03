@@ -1,0 +1,114 @@
+variables:
+    GIT_STRATEGY: clone
+    DEVICE: 'web'
+    DEPLOY_DIRECTORY: '/srv/www/api.tarlanpayments.kz/htdocs'
+    BUILD_DIR_COMMON: '$DEPLOY_DIRECTORY/builds/payservice'
+
+.before_script_build:
+    before_script:
+        - source .${CI_COMMIT_REF_NAME}.env
+        - chmod +x ./setup_env.sh
+        - ./setup_env.sh
+
+stages:
+    - install_dependencies
+    - test
+    - build
+    - deploy
+
+install_dependencies:
+    stage: install_dependencies
+    script:
+        - npm install
+    cache:
+        key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+        paths:
+            - node_modules/
+    only:
+        refs:
+            - staging
+            - master
+        changes:
+            - yarn.lock
+            - package-lock.json
+
+test:
+    stage: test
+    cache:
+        key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+        paths:
+          - node_modules/
+        policy: pull
+    script:
+        - npm run test
+    only:
+        - staging
+        - master
+
+build_and_deploy:
+    stage: build
+    extends: .before_script_build
+    cache:
+        key: $CI_COMMIT_REF_SLUG-$CI_PROJECT_DIR
+        paths:
+          - node_modules/
+        policy: pull
+    script:
+        - npm run build
+    artifacts:
+        paths:
+            - payservice
+        expire_in: 60 mins
+    dependencies:
+        - install_dependencies
+        - test
+    when: manual
+    only:
+        - staging
+        - master
+
+deploy_staging:
+    stage: deploy
+    script:
+        - export DEPLOY_TIMESTAMP=$(date +%s)
+        - 'which ssh-agent || ( apt-get update -y && apt-get install_dependencies openssh-client -y )'
+        - eval $(ssh-agent -s)
+        - ssh-add <(echo "$SSH_PRIVATE_KEY_STAGING")
+        - mkdir -p ~/.ssh
+        - chmod 700 ~/.ssh
+        - ssh-keyscan 10.113.0.3 >> ~/.ssh/known_hosts
+        - chmod 644 ~/.ssh/known_hosts
+        - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+        - ssh tarlan_user@10.113.0.3 "cd $DEPLOY_DIRECTORY && mkdir -p builds/payservice"
+        - rsync -vv -rz --checksum --delete payservice tarlan_user@10.113.0.3:$BUILD_DIR_COMMON/$DEPLOY_TIMESTAMP/
+        - ssh tarlan_user@10.113.0.3 "cd $DEPLOY_DIRECTORY && ln -nfs $BUILD_DIR_COMMON/$DEPLOY_TIMESTAMP/payservice $DEPLOY_DIRECTORY/ && find $BUILD_DIR_COMMON -depth -mindepth 1 -maxdepth 1 -type d ! -regex '^$BUILD_DIR_COMMON/$DEPLOY_TIMESTAMP\(/.*\)?' -exec rm -rv {} +"
+    needs:
+        - build_and_deploy
+    only:
+        - staging
+    environment:
+        name: staging
+        url: http://10.113.0.3
+
+deploy_master:
+    stage: deploy
+    script:
+        - export DEPLOY_TIMESTAMP=$(date +%s)
+        - 'which ssh-agent || ( apt-get update -y && apt-get install_dependencies openssh-client -y )'
+        - eval $(ssh-agent -s)
+        - ssh-add <(echo "$SSH_PRIVATE_KEY_PRODUCTION")
+        - mkdir -p ~/.ssh
+        - chmod 700 ~/.ssh
+        - ssh-keyscan 10.113.0.2 >> ~/.ssh/known_hosts
+        - chmod 644 ~/.ssh/known_hosts
+        - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+        - ssh tarlan_user@10.113.0.2 "cd $DEPLOY_DIRECTORY && mkdir -p builds/payservice"
+        - rsync -vv -rz --checksum --delete payservice tarlan_user@10.113.0.2:$BUILD_DIR_COMMON/$DEPLOY_TIMESTAMP/
+        - ssh tarlan_user@10.113.0.2 "cd $DEPLOY_DIRECTORY && ln -nfs $BUILD_DIR_COMMON/$DEPLOY_TIMESTAMP/payservice $DEPLOY_DIRECTORY/ && find $BUILD_DIR_COMMON -depth -mindepth 1 -maxdepth 1 -type d ! -regex '^$BUILD_DIR_COMMON/$DEPLOY_TIMESTAMP\(/.*\)?' -exec rm -rv {} +"
+    needs:
+        - build_and_deploy
+    only:
+        - master
+    environment:
+        name: master
+        url: http://10.113.0.2

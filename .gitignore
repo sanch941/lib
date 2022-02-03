@@ -1,0 +1,14 @@
+.idea
+.DS_STORE
+node_modules
+.module-cache
+*.log*
+build
+dist
+.env
+payservice
+payservice-paygram
+payservice-vertex
+payservice-mfo
+payservice-applepay
+payservice-card-linking
