@@ -1,6 +1,6 @@
 {
   "name": "@sanch941/lib",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "This lib contains helper functions",
   "main": "src/index.js",
   "scripts": {
@@ -13,8 +13,7 @@
     "prunecaches": "rimraf ./node_modules/.cache/",
     "clean-cache": "yarn prunecaches",
     "debug-build": "cross-env BUILD_TIME_DEBUG=true yarn start",
-    "library": "sanch941-configs-webpack library",
-    "postinstall": "is-ci || yarn library"
+    "library": "sanch941-configs-webpack library"
   },
   "repository": {
     "type": "git",
