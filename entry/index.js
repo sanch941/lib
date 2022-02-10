@@ -1,1 +1,1 @@
-export { errorHandler } from '../src/lib';
+export { builderLoadingMatcher } from '../src/lib';

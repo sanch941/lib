@@ -58,6 +58,7 @@ module.exports = {
                 'react/no-unknown-property': 2,
                 'react-hooks/exhaustive-deps': 0,
                 'react/prop-types': 'off',
+                'prefer-spread': 0,
                 'no-restricted-imports': [
                     'error',
                     {
