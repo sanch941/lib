@@ -1,6 +1,6 @@
 {
   "name": "@sanch941/lib",
-  "version": "2.0.0",
+  "version": "2.1.1",
   "description": "This lib contains helper functions",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -14,6 +14,7 @@
     "debug-build": "cross-env BUILD_TIME_DEBUG=true yarn start",
     "library": "sanch941-configs-webpack library",
     "prepare": "yarn build",
+    "version": "git add -A src",
     "postversion": "git push origin develop"
   },
   "repository": {
