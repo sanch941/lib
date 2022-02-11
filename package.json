@@ -1,19 +1,20 @@
 {
   "name": "@sanch941/lib",
-  "version": "1.1.1",
+  "version": "2.0.0",
   "description": "This lib contains helper functions",
-  "main": "src/index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "test": "jest",
     "start": "sanch941-configs-webpack dev",
-    "watch-files": "npx adw -w",
     "dev": "sanch941-configs-webpack dev",
-    "build": "cross-env NODE_ENV=production sanch941-configs-webpack build",
+    "build": "tsc --project tsconfig.production.json",
     "lint": "eslint --ext .ts,.tsx src/ --fix",
-    "prunecaches": "rimraf ./node_modules/.cache/",
-    "clean-cache": "yarn prunecaches",
+    "clean-cache": "rimraf ./node_modules/.cache/",
     "debug-build": "cross-env BUILD_TIME_DEBUG=true yarn start",
-    "library": "sanch941-configs-webpack library"
+    "library": "sanch941-configs-webpack library",
+    "prepare": "yarn build",
+    "postversion": "git push origin develop"
   },
   "repository": {
     "type": "git",
@@ -131,6 +132,12 @@
     "webpack-merge": "^5.1.1",
     "yup": "^0.29.1"
   },
+  "peerDependencies": {
+    "@reduxjs/toolkit": ">= 1.7.0 < 2"
+  },
+  "files": [
+    "lib/**/*"
+  ],
   "browserslist": {
     "production": [
       "ie 11"
