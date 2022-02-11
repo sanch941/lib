@@ -1,6 +1,6 @@
 {
   "name": "@sanch941/lib",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "This lib contains helper functions",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -132,9 +132,6 @@
     "typescript": "^3.7.4",
     "webpack-merge": "^5.1.1",
     "yup": "^0.29.1"
-  },
-  "peerDependencies": {
-    "@reduxjs/toolkit": ">= 1.7.0 < 2"
   },
   "files": [
     "lib/**/*"
