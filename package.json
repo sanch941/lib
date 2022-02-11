@@ -1,6 +1,6 @@
 {
   "name": "@sanch941/lib",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "This lib contains helper functions",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -15,7 +15,8 @@
     "library": "sanch941-configs-webpack library",
     "prepare": "yarn build",
     "version": "git add -A .",
-    "postversion": "git push origin develop"
+    "postversion": "git push origin develop",
+    "postinstall": "is-ci || yarn library"
   },
   "repository": {
     "type": "git",
