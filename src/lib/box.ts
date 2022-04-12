@@ -28,7 +28,7 @@ interface ComponentProps extends MarginProps {
     ai?: 'flex-start' | 'center' | 'space-between' | 'flex-end';
     $width?: string | number;
     fxw?: 'nowrap' | 'wrap' | 'wrap-reverse';
-    $height: string | number;
+    $height?: string | number;
 }
 export type BoxProps = ComponentProps;
 
