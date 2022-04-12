@@ -9,6 +9,7 @@ export const Box = styled.div<ComponentProps>`
     justify-content: ${({ jc }) => jc};
     align-items: ${({ ai }) => ai};
     width: ${({ $width }) => getDimension($width)};
+    height: ${({ $height }) => getDimension($height)};
     position: relative;
     fxw: ${({ fxw }) => fxw};
 `;
@@ -27,6 +28,7 @@ interface ComponentProps extends MarginProps {
     ai?: 'flex-start' | 'center' | 'space-between' | 'flex-end';
     $width?: string | number;
     fxw?: 'nowrap' | 'wrap' | 'wrap-reverse';
+    $height: string | number;
 }
 export type BoxProps = ComponentProps;
 
