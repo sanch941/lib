@@ -12,6 +12,7 @@ export const Box = styled.div<ComponentProps>`
     height: ${({ $height }) => getDimension($height)};
     position: relative;
     fxw: ${({ fxw }) => fxw};
+    background: ${({ bg }) => bg};
 `;
 
 interface MarginProps {
@@ -29,6 +30,7 @@ interface ComponentProps extends MarginProps {
     $width?: string | number;
     fxw?: 'nowrap' | 'wrap' | 'wrap-reverse';
     $height?: string | number;
+    bg?: string;
 }
 export type BoxProps = ComponentProps;
 
