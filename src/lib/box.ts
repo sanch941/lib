@@ -10,6 +10,7 @@ export const Box = styled.div<ComponentProps>`
     align-items: ${({ ai }) => ai};
     width: ${({ $width }) => getDimension($width)};
     position: relative;
+    fxw: ${({ $fxw }) => $fxw};
 `;
 
 interface MarginProps {
@@ -18,6 +19,7 @@ interface MarginProps {
     $right?: number;
     $bottom?: number;
     $margin?: string;
+    $fxw?: 'nowrap' | 'wrap' | 'wrap-reverse';
 }
 
 interface ComponentProps extends MarginProps {
