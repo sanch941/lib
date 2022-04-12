@@ -1,5 +1,6 @@
 import { pxRem } from './px-rem';
 import styled, { css } from 'styled-components';
+import { getDimension } from './get-dimension';
 
 export const Text = styled.p<Props>`
     ${({ fz, lh, $color, fw, $width, ta }) => css`
@@ -24,6 +25,3 @@ interface Props {
     ta?: string;
 }
 export type TextProps = Props;
-
-const getDimension = (unit: number | string) =>
-    typeof unit === 'number' ? pxRem(unit) : unit;
