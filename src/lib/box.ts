@@ -31,6 +31,7 @@ interface ComponentProps extends MarginProps {
     fxw?: 'nowrap' | 'wrap' | 'wrap-reverse';
     $height?: string | number;
     bg?: string;
+    fxd?: 'column' | 'column-reverse' | 'row' | 'row-reverse';
 }
 export type BoxProps = ComponentProps;
 
