@@ -5,14 +5,18 @@ import { getDimension } from './get-dimension';
 export const Box = styled.div<ComponentProps>`
     ${({ $top, $bottom, $left, $right }) =>
         getMargin({ $top, $bottom, $left, $right })};
-    display: ${({ $flex }) => $flex && 'flex'};
-    justify-content: ${({ jc }) => jc};
-    align-items: ${({ ai }) => ai};
-    width: ${({ $width }) => getDimension($width)};
-    height: ${({ $height }) => getDimension($height)};
-    position: relative;
-    fxw: ${({ fxw }) => fxw};
-    background: ${({ bg }) => bg};
+
+    ${({ $flex, jc, ai, $width, $height, fxw, fxd, bg }) => css`
+        display: ${$flex && 'flex'};
+        justify-content: ${jc};
+        align-items: ${ai};
+        width: ${getDimension($width)};
+        height: ${getDimension($height)};
+        position: relative;
+        flex-wrap: ${fxw};
+        background: ${bg};
+        flex-direction: ${fxd};
+    `}
 `;
 
 interface MarginProps {
