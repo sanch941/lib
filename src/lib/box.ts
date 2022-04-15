@@ -14,11 +14,11 @@ export const Box = styled.div<ComponentProps>`
 `;
 
 interface MarginProps {
-    $top?: number;
-    $left?: number;
-    $right?: number;
-    $bottom?: number;
-    $margin?: string;
+    $top?: number | string;
+    $left?: number | string;
+    $right?: number | string;
+    $bottom?: number | string;
+    $margin?: string | string;
 }
 
 interface Props extends MarginProps {
