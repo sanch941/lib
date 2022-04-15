@@ -1,4 +1,3 @@
-import { pxRem } from './px-rem';
 import styled, { css } from 'styled-components';
 import { getDimension } from './get-dimension';
 import { media } from './media';
@@ -45,10 +44,10 @@ const getMargin = ({ $top, $left, $right, $bottom, $margin }: MarginProps) => {
               margin: ${$margin};
           `
         : css`
-              margin-top: ${$top && pxRem($top)};
-              margin-left: ${$left && pxRem($left)};
-              margin-right: ${$right && pxRem($right)};
-              margin-bottom: ${$bottom && pxRem($bottom)};
+              margin-top: ${getDimension($top)};
+              margin-left: ${getDimension($left)};
+              margin-right: ${getDimension($right)};
+              margin-bottom: ${getDimension($bottom)};
           `;
 };
 
