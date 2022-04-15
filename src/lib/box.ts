@@ -61,7 +61,7 @@ const getStyles = ({
     fxw,
     fxd,
     bg
-}: ComponentProps) => css`
+}: ComponentProps = {}) => css`
     display: ${$flex && 'flex'};
     justify-content: ${jc};
     align-items: ${ai};
