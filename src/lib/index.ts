@@ -5,3 +5,4 @@ export { Box, BoxProps } from './box';
 export { getDimension } from './get-dimension';
 export { IsMobile, IsDesktop } from './is-media';
 export { media } from './media';
+export { Portal } from './portal';
