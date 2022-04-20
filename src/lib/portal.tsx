@@ -1,8 +1,9 @@
 import { useEffect, useState, FC } from 'react';
 import { createPortal } from 'react-dom';
 
-const modalRoot = document.getElementById('modal-root');
 export const Portal: FC<ComponentProps> = ({ children, el = 'div' }) => {
+    const modalRoot = document.getElementById('modal-root');
+
     const [container] = useState(() => {
         // This will be executed only on the initial render
         // https://reactjs.org/docs/hooks-reference.html#lazy-initial-state
