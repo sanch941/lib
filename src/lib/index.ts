@@ -6,3 +6,4 @@ export { getDimension } from './get-dimension';
 export { IsMobile, IsDesktop } from './is-media';
 export { media } from './media';
 export { Portal } from './portal';
+export { makeTriangle } from './make-triangle';
