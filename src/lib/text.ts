@@ -28,7 +28,7 @@ interface ComponentProps extends Props {
     sm?: Props;
 }
 
-const getStyles = ({ fz, lh, $color, fw, $width, ta }: Props) => css`
+const getStyles = ({ fz, lh, $color, fw, $width, ta }: Props = {}) => css`
     font-size: ${fz ? getDimension(fz) : pxRem(16)};
     line-height: ${Boolean(lh) && getDimension(lh)};
     color: ${$color};
