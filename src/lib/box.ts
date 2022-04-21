@@ -3,9 +3,6 @@ import { getDimension } from './get-dimension';
 import { media } from './media';
 
 export const Box = styled.div<ComponentProps>`
-    ${({ $top, $bottom, $left, $right }) =>
-        getMargin({ $top, $bottom, $left, $right })};
-
     ${(props) => getStyles(props)};
 
     ${media.sm} {
@@ -13,15 +10,12 @@ export const Box = styled.div<ComponentProps>`
     }
 `;
 
-interface MarginProps {
+interface Props {
     $top?: number | string;
     $left?: number | string;
     $right?: number | string;
     $bottom?: number | string;
     $margin?: string | string;
-}
-
-interface Props extends MarginProps {
     $flex?: boolean;
     jc?: 'flex-start' | 'center' | 'space-between' | 'flex-end';
     ai?: 'flex-start' | 'center' | 'space-between' | 'flex-end';
@@ -38,7 +32,7 @@ interface ComponentProps extends Props {
 
 export type BoxProps = ComponentProps;
 
-const getMargin = ({ $top, $left, $right, $bottom, $margin }: MarginProps) => {
+const getMargin = ({ $top, $left, $right, $bottom, $margin }: Props) => {
     return $margin
         ? css`
               margin: ${$margin};
@@ -51,23 +45,20 @@ const getMargin = ({ $top, $left, $right, $bottom, $margin }: MarginProps) => {
           `;
 };
 
-const getStyles = ({
-    $flex,
-    jc,
-    ai,
-    $width,
-    $height,
-    fxw,
-    fxd,
-    bg
-}: ComponentProps = {}) => css`
-    display: ${$flex && 'flex'};
-    justify-content: ${jc};
-    align-items: ${ai};
-    width: ${getDimension($width)};
-    height: ${getDimension($height)};
-    position: relative;
-    flex-wrap: ${fxw};
-    background: ${bg};
-    flex-direction: ${fxd};
-`;
+const getStyles = (props: ComponentProps = {}) => {
+    const { $flex, jc, ai, $width, $height, fxw, fxd, bg } = props;
+
+    return css`
+        display: ${$flex && 'flex'};
+        justify-content: ${jc};
+        align-items: ${ai};
+        width: ${getDimension($width)};
+        height: ${getDimension($height)};
+        position: relative;
+        flex-wrap: ${fxw};
+        background: ${bg};
+        flex-direction: ${fxd};
+
+        ${getMargin(props)}
+    `;
+};
