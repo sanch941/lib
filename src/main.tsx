@@ -5,8 +5,5 @@ import 'regenerator-runtime/runtime';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from '@features/app';
-import { initI18n } from './lib/i18n';
-
-initI18n();
 
 ReactDOM.render(<App />, document.getElementById('root'));

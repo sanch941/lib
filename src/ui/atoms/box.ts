@@ -1,4 +1,3 @@
-import { checkValueAndGetPx } from '@lib';
 import styled, { css } from 'styled-components';
 
 export const Box = styled.div<ComponentProps>`
@@ -27,10 +26,5 @@ const getMargin = ({
         ? css`
               margin: ${$margin};
           `
-        : css`
-              margin-top: ${checkValueAndGetPx($top)};
-              margin-left: ${checkValueAndGetPx($left)};
-              margin-right: ${checkValueAndGetPx($right)};
-              margin-bottom: ${checkValueAndGetPx($bottom)};
-          `;
+        : css``;
 };

@@ -1,4 +1,3 @@
-import { pxToRem } from '@lib';
 import styled, { css } from 'styled-components';
 import { loaderStyles } from './loader';
 
@@ -12,7 +11,6 @@ const getCssByTarget = (target: Target) => {
                 padding: 5px 10px;
                 border-radius: 5px;
                 text-decoration: none;
-                font-size: ${pxToRem(16)};
             `;
         case 'submit':
             return css``;

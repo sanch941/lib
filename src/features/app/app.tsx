@@ -5,21 +5,18 @@ import { store } from '@store';
 import { DetectDeviceProvider } from './detect-device';
 import { Router } from './router';
 import { BrowserRouter } from 'react-router-dom';
-import { ErrorBoundary } from '@features/error-boundary';
 import { GlobalStyles } from './global-styles';
 
 export const _App: FC = () => (
-    <ErrorBoundary>
-        <Provider store={store}>
-            <GlobalStyles />
+    <Provider store={store}>
+        <GlobalStyles />
 
-            <DetectDeviceProvider>
-                <BrowserRouter basename="/payservice">
-                    <Router />
-                </BrowserRouter>
-            </DetectDeviceProvider>
-        </Provider>
-    </ErrorBoundary>
+        <DetectDeviceProvider>
+            <BrowserRouter basename="/payservice">
+                <Router />
+            </BrowserRouter>
+        </DetectDeviceProvider>
+    </Provider>
 );
 
 export const App = hot(() => <_App />);

@@ -1,20 +1,25 @@
-import { useAppDispatch, useAppSelector } from '@store';
-import React, { useEffect } from 'react';
-import { homeActions } from './model';
-
-const { setHomePage } = homeActions;
+import { Collapsible } from '@lib';
+import React from 'react';
 
 export const HomePage = () => {
-    const dispatch = useAppDispatch();
-    useEffect(() => {
-        setTimeout(() => {
-            dispatch(setHomePage());
-        }, 3000);
-    }, []);
+    const Title = () => <div>title</div>;
 
-    const welcomeText = useAppSelector(
-        ({ home: { welcomeText } }) => welcomeText
+    const Content = () => (
+        <>
+            <div>content</div>
+            <div>content</div>
+            <div>content</div>
+            <div>content</div>
+            <div>content</div>
+            <div>content</div>
+            <div>content</div>
+            <div>content</div>
+        </>
     );
 
-    return <div> {welcomeText} </div>;
+    return (
+        <>
+            <Collapsible VisiblePart={Title} Inner={Content} />
+        </>
+    );
 };
