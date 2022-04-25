@@ -1,4 +1,3 @@
-import { pxRem } from './px-rem';
 import styled, { css } from 'styled-components';
 import { getDimension } from './get-dimension';
 import { media } from './media';
@@ -29,10 +28,10 @@ interface ComponentProps extends Props {
 }
 
 const getStyles = ({ fz, lh, $color, fw, $width, ta }: Props = {}) => css`
-    font-size: ${fz ? getDimension(fz) : pxRem(16)};
-    line-height: ${Boolean(lh) && getDimension(lh)};
+    font-size: ${getDimension(fz)};
+    line-height: ${getDimension(lh)};
     color: ${$color};
     font-weight: ${fw};
-    width: ${Boolean($width) && getDimension($width)};
+    width: ${getDimension($width)};
     text-align: ${ta};
 `;
