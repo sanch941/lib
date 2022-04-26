@@ -14,16 +14,14 @@ export const Collapsible: FC<ComponentProps> = ({
 
     return (
         <div>
-            <StyledTitle onClick={onClick}>
-                <VisiblePart />
-            </StyledTitle>
+            <StyledTitle onClick={onClick}>{VisiblePart}</StyledTitle>
 
             <StyledContent
                 scrollHeight={contentRef.current?.scrollHeight}
                 open={open !== undefined ? open : openLocal}
                 ref={contentRef}
             >
-                <Inner />
+                {Inner}
             </StyledContent>
         </div>
     );
@@ -31,14 +29,14 @@ export const Collapsible: FC<ComponentProps> = ({
 
 type ComponentProps =
     | {
-          VisiblePart: FC;
-          Inner: FC;
+          VisiblePart: JSX.Element;
+          Inner: JSX.Element;
           $onClick?: never;
           open?: never;
       }
     | {
-          VisiblePart: FC;
-          Inner: FC;
+          VisiblePart: JSX.Element;
+          Inner: JSX.Element;
           $onClick: () => void;
           open: boolean;
       };
