@@ -1,19 +1,26 @@
 import React, { FC, useRef, useState } from 'react';
 import styled from 'styled-components';
 
-export const Collapsible: FC<ComponentProps> = ({ VisiblePart, Inner }) => {
+export const Collapsible: FC<ComponentProps> = ({
+    VisiblePart,
+    Inner,
+    open,
+    $onClick
+}) => {
     const contentRef = useRef(null);
-    const [open, setOpen] = useState(false);
+    const [openLocal, setOpenLocal] = useState(false);
+
+    const onClick = () => ($onClick ? $onClick() : setOpenLocal(!openLocal));
 
     return (
         <div>
-            <StyledTitle onClick={() => setOpen(!open)}>
+            <StyledTitle onClick={onClick}>
                 <VisiblePart />
             </StyledTitle>
 
             <StyledContent
                 scrollHeight={contentRef.current?.scrollHeight}
-                open={open}
+                open={open !== undefined ? open : openLocal}
                 ref={contentRef}
             >
                 <Inner />
@@ -22,10 +29,19 @@ export const Collapsible: FC<ComponentProps> = ({ VisiblePart, Inner }) => {
     );
 };
 
-interface ComponentProps {
-    VisiblePart: FC;
-    Inner: FC;
-}
+type ComponentProps =
+    | {
+          VisiblePart: FC;
+          Inner: FC;
+          $onClick?: never;
+          open?: never;
+      }
+    | {
+          VisiblePart: FC;
+          Inner: FC;
+          $onClick: () => void;
+          open: boolean;
+      };
 
 const StyledTitle = styled.div`
     cursor: pointer;

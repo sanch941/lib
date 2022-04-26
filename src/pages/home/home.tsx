@@ -1,7 +1,9 @@
 import { Collapsible } from '@lib';
-import React from 'react';
+import React, { useState } from 'react';
 
 export const HomePage = () => {
+    const [open, setOpen] = useState(false);
+
     const Title = () => <div>title</div>;
 
     const Content = () => (
@@ -19,7 +21,12 @@ export const HomePage = () => {
 
     return (
         <>
-            <Collapsible VisiblePart={Title} Inner={Content} />
+            <Collapsible
+                open={open}
+                $onClick={() => setOpen(!open)}
+                VisiblePart={Title}
+                Inner={Content}
+            />
         </>
     );
 };
