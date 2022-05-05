@@ -8,3 +8,4 @@ export { media } from './media';
 export { Portal } from './portal';
 export { makeTriangle } from './make-triangle';
 export { Collapsible } from './collapsible';
+export { ClickOutside } from './click-outside';
