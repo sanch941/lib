@@ -9,3 +9,5 @@ export { Portal } from './portal';
 export { makeTriangle } from './make-triangle';
 export { Collapsible } from './collapsible';
 export { ClickOutside } from './click-outside';
+export { StrNum, HtmlButton, HtmlDiv, HtmlInput } from './types';
+export { Image } from './image';

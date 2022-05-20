@@ -51,7 +51,6 @@ const StyledIcon = styled.div<{ open: boolean }>`
     height: ${pxRem(10)};
     background-color: red;
     width: ${pxRem(15)};
-
     transform: ${({ open }) => (open ? 'rotate(180deg)' : 'rotate(0)')};
 `;
 
