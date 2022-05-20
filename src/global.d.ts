@@ -27,4 +27,3 @@ declare module '*.json' {
     const value: any;
     export default value;
 }
-declare const _STRAPI_URL_: string;

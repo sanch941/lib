@@ -80,6 +80,8 @@ interface ComponentProps extends MappedStrapiImage {
     widthOnScreen?: WidthOnScreen;
 }
 
+declare const _STRAPI_URL_: string;
+
 interface WidthOnScreen {
     mobile?: number;
     desktop: number;
