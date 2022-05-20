@@ -85,7 +85,7 @@ interface WidthOnScreen {
     desktop: number;
 }
 
-const host = process.env.STRAPI_URL || 'http://localhost:1337';
+const host = _STRAPI_URL_ || 'http://localhost:1337';
 
 interface CreateSrcsetParams {
     widthOnScreen?: WidthOnScreen;
