@@ -1,7 +1,7 @@
-import { MappedStrapiImage, StrapiImage } from './types';
+import { MappedStrapiImage, StrapiImageFromRes } from './types';
 
 export const mapStrapiImage = (
-    strapiImages: StrapiImage
+    strapiImages: StrapiImageFromRes
 ): MappedStrapiImage => {
     const getMobileFilename = () => {
         if (strapiImages?.mobile?.data) {

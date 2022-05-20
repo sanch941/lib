@@ -12,7 +12,7 @@ export interface MappedStrapiImage {
     desktopFilename: string;
 }
 
-export interface StrapiImageQuery {
+export interface StrapiImageQueryFromRes {
     id: number;
     attributes: {
         name: string;
@@ -46,12 +46,12 @@ export interface StrapiImageQuery {
     };
 }
 
-export interface StrapiImage {
+export interface StrapiImageFromRes {
     id: number;
     mobile: {
-        data: StrapiImageQuery;
+        data: StrapiImageQueryFromRes;
     };
     desktop: {
-        data: StrapiImageQuery;
+        data: StrapiImageQueryFromRes;
     };
 }
