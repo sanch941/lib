@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { getDimension } from './get-dimension';
 import { MappedStrapiImages, StrNum } from './types';
 
-const _Image: FC<ComponentProps> = (props) => {
+const _StrapiImage: FC<ComponentProps> = (props) => {
     const { mobileFilename, desktopFilename, options, widthOnScreen } = props;
 
     const commonParams = {
@@ -71,7 +71,7 @@ const _Image: FC<ComponentProps> = (props) => {
     );
 };
 
-export const Image = memo(_Image);
+export const StrapiImage = memo(_StrapiImage);
 
 interface ComponentProps extends MappedStrapiImages {
     $height?: StrNum;

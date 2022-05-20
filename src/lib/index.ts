@@ -10,4 +10,4 @@ export { makeTriangle } from './make-triangle';
 export { Collapsible } from './collapsible';
 export { ClickOutside } from './click-outside';
 export { StrNum, HtmlButton, HtmlDiv, HtmlInput } from './types';
-export { Image } from './image';
+export { StrapiImage } from './strapi-image';
