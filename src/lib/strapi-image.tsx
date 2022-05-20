@@ -1,7 +1,7 @@
 import React, { FC, memo, useMemo } from 'react';
 import styled, { css } from 'styled-components';
 import { getDimension } from './get-dimension';
-import { MappedStrapiImages, StrNum } from './types';
+import { MappedStrapiImage, StrNum } from './types';
 
 const _StrapiImage: FC<ComponentProps> = (props) => {
     const { mobileFilename, desktopFilename, options, widthOnScreen } = props;
@@ -73,7 +73,7 @@ const _StrapiImage: FC<ComponentProps> = (props) => {
 
 export const StrapiImage = memo(_StrapiImage);
 
-interface ComponentProps extends MappedStrapiImages {
+interface ComponentProps extends MappedStrapiImage {
     $height?: StrNum;
     $width?: StrNum;
     options?: string;
