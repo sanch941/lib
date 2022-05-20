@@ -80,14 +80,14 @@ interface ComponentProps extends MappedStrapiImage {
     widthOnScreen?: WidthOnScreen;
 }
 
-declare const _DEV_: string;
+declare const _STRAPI_URL_: string;
 
 interface WidthOnScreen {
     mobile?: number;
     desktop: number;
 }
 
-const host = _DEV_ || 'http://localhost:1337';
+const host = _STRAPI_URL_ || 'http://localhost:1337';
 
 interface CreateSrcsetParams {
     widthOnScreen?: WidthOnScreen;
