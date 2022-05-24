@@ -1,6 +1,6 @@
 {
   "name": "@sanch941/lib",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "description": "This lib contains helper functions",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
