@@ -82,8 +82,8 @@ const getStyles = (props: ComponentProps = {}) => {
         flex-wrap: ${fxw};
         background: ${bg};
         flex-direction: ${fxd};
-        min-height: ${mih};
-        max-height: ${mah};
+        min-height: ${getDimension(mih)};
+        max-height: ${getDimension(mah)};
 
         ${getMargin(props)}
     `;
