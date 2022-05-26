@@ -10,13 +10,19 @@ const createBreakpoint = (
 };
 
 const sizes = {
-    xs: 320,
-    sm: 768,
-    lg: 1170
+    xs: 0,
+    sm: 576,
+    md: 768,
+    lg: 992,
+    xl: 1200,
+    xxl: 1400
 };
 
 export const media = {
-    xs: createBreakpoint('min-width', sizes.xs),
+    xs: createBreakpoint('max-width', sizes.sm),
     sm: createBreakpoint('min-width', sizes.sm),
-    lg: createBreakpoint('min-width', sizes.lg)
+    md: createBreakpoint('min-width', sizes.md),
+    lg: createBreakpoint('min-width', sizes.lg),
+    xl: createBreakpoint('min-width', sizes.xl),
+    xxl: createBreakpoint('min-width', sizes.xxl)
 };
