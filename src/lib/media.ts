@@ -10,7 +10,7 @@ const createBreakpoint = (
 };
 
 const sizes = {
-    xs: 320,
+    xs: 375,
     sm: 576,
     md: 768,
     lg: 992,

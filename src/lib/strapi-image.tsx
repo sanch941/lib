@@ -1,4 +1,7 @@
 import React, { FC, memo, useMemo } from 'react';
+import styled, { css } from 'styled-components';
+import { getDimension } from './get-dimension';
+import { media } from './media';
 import { MappedStrapiImage } from './types';
 
 const _StrapiImage: FC<ComponentProps> = (props) => {
@@ -34,7 +37,9 @@ const _StrapiImage: FC<ComponentProps> = (props) => {
             <picture>
                 {mobileFilename && (
                     <>
-                        <source
+                        <StyledImage
+                            as="source"
+                            widthOnScreen={widthOnScreen}
                             type="image/webp"
                             media="(max-width: 768px)"
                             srcSet={createMobileSrcset({
@@ -44,8 +49,10 @@ const _StrapiImage: FC<ComponentProps> = (props) => {
                             })}
                             {...props}
                         />
-                        <source
+                        <StyledImage
+                            as="source"
                             media="(max-width: 768px)"
+                            widthOnScreen={widthOnScreen}
                             srcSet={createMobileSrcset({
                                 filename: mobileFilename,
                                 ...commonParams
@@ -55,8 +62,19 @@ const _StrapiImage: FC<ComponentProps> = (props) => {
                     </>
                 )}
 
-                <source type="image/webp" srcSet={mainWebpSrcSet} {...props} />
-                <img src={defaultSrc} srcSet={mainSrcset} {...props} />
+                <StyledImage
+                    widthOnScreen={widthOnScreen}
+                    as="source"
+                    type="image/webp"
+                    srcSet={mainWebpSrcSet}
+                    {...props}
+                />
+                <StyledImage
+                    widthOnScreen={widthOnScreen}
+                    src={defaultSrc}
+                    srcSet={mainSrcset}
+                    {...props}
+                />
             </picture>
         </>
     );
@@ -158,3 +176,17 @@ const getDefaultSrc = (
 
     return `${host}/uploads/w_${commonWidthOnScreen}/${filename}`;
 };
+
+interface StyledImageAndSourceProps {
+    widthOnScreen: WidthOnScreen;
+}
+
+const StyledImage = styled.img<StyledImageAndSourceProps>`
+    ${({ widthOnScreen }) => css`
+        width: ${getDimension(widthOnScreen?.mobile)};
+
+        ${media.md} {
+            width: ${getDimension(widthOnScreen?.common)};
+        }
+    `}
+`;
