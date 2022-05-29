@@ -11,7 +11,7 @@ export const mapStrapiImage = (
         }
     };
 
-    const getDesktopFilename = () => {
+    const getCommonFilename = () => {
         if (strapiImages?.default?.data) {
             const { hash, ext } = strapiImages.default.data?.attributes || {};
             const filename = `${hash}${ext}`;
@@ -21,6 +21,6 @@ export const mapStrapiImage = (
 
     return {
         mobileFilename: getMobileFilename(),
-        desktopFilename: getDesktopFilename()
+        commonFilename: getCommonFilename()
     };
 };

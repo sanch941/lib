@@ -9,7 +9,7 @@ export type HtmlImg = React.ImgHTMLAttributes<HTMLImageElement>;
 
 export interface MappedStrapiImage {
     mobileFilename?: string;
-    desktopFilename: string;
+    commonFilename: string;
 }
 
 export interface StrapiImageQueryFromRes {

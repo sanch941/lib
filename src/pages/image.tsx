@@ -5,10 +5,10 @@ export const ImagePage = () => {
     return (
         <>
             <StrapiImage
-                desktopFilename="from_figma_dd2110eae5.png"
+                commonFilename="from_figma_dd2110eae5.png"
                 widthOnScreen={{
                     mobile: 121,
-                    desktop: 218
+                    common: 218
                 }}
             />
         </>

@@ -4,7 +4,7 @@ import { getDimension } from './get-dimension';
 import { MappedStrapiImage, StrNum } from './types';
 
 const _StrapiImage: FC<ComponentProps> = (props) => {
-    const { mobileFilename, desktopFilename, options, widthOnScreen } = props;
+    const { mobileFilename, commonFilename, options, widthOnScreen } = props;
 
     const commonParams = {
         options,
@@ -16,20 +16,20 @@ const _StrapiImage: FC<ComponentProps> = (props) => {
 
     const { mainSrcset, mainWebpSrcSet, defaultSrc } = useMemo(() => {
         const mainSrcset = createMainSrcset({
-            filename: desktopFilename,
+            filename: commonFilename,
             ...commonParams
         });
 
         const mainWebpSrcSet = createMainSrcset({
-            filename: desktopFilename,
+            filename: commonFilename,
             ...commonParams,
             options: optionComposedWithWebp
         });
 
-        const defaultSrc = getDefaultSrc(desktopFilename, widthOnScreen);
+        const defaultSrc = getDefaultSrc(commonFilename, widthOnScreen);
 
         return { mainSrcset, mainWebpSrcSet, defaultSrc };
-    }, [desktopFilename]);
+    }, [commonFilename]);
 
     return (
         <>
@@ -84,7 +84,7 @@ declare const _STRAPI_URL_: string;
 
 interface WidthOnScreen {
     mobile?: number;
-    desktop: number;
+    common: number;
 }
 
 declare global {
@@ -115,9 +115,9 @@ const createMainSrcset = ({
     widthOnScreen,
     options
 }: CreateSrcsetParams): string => {
-    const { mobile, desktop } = widthOnScreen || {};
+    const { mobile, common } = widthOnScreen || {};
     const mobileWidthOnScreen = Math.round(mobile) | 768;
-    const desktopWidthOnScreen = Math.round(desktop);
+    const commonWidthOnScreen = Math.round(common);
 
     const createPoint = setupCreatingPoint(options, filename);
 
@@ -129,16 +129,16 @@ const createMainSrcset = ({
     };
 
     const getDesktopSrcset = (): string => {
-        return `${createPoint(desktopWidthOnScreen, 1600)}, ${createPoint(
-            desktopWidthOnScreen * 2,
+        return `${createPoint(commonWidthOnScreen, 1600)}, ${createPoint(
+            commonWidthOnScreen * 2,
             2560
         )}`;
     };
 
     const mobileSrcset = getMobileSrcset();
-    const desktopSrcset = getDesktopSrcset();
+    const commonSrcset = getDesktopSrcset();
 
-    const srcSet = `${mobileSrcset}, ${desktopSrcset}`;
+    const srcSet = `${mobileSrcset}, ${commonSrcset}`;
     return srcSet;
 };
 
@@ -166,10 +166,10 @@ const getDefaultSrc = (
     filename: string,
     widthOnScreen: WidthOnScreen
 ): string => {
-    const { desktop } = widthOnScreen;
-    const desktopWidthOnScreen = Math.round(desktop);
+    const { common } = widthOnScreen;
+    const commonWidthOnScreen = Math.round(common);
 
-    return `${host}/uploads/w_${desktopWidthOnScreen}/${filename}`;
+    return `${host}/uploads/w_${commonWidthOnScreen}/${filename}`;
 };
 
 interface StyledImageAndSourceProps {
