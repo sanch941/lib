@@ -51,7 +51,7 @@ export interface StrapiImageFromRes {
     mobile: {
         data: StrapiImageQueryFromRes;
     };
-    desktop: {
+    default: {
         data: StrapiImageQueryFromRes;
     };
 }

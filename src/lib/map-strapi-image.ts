@@ -12,8 +12,8 @@ export const mapStrapiImage = (
     };
 
     const getDesktopFilename = () => {
-        if (strapiImages?.desktop?.data) {
-            const { hash, ext } = strapiImages.desktop.data?.attributes || {};
+        if (strapiImages?.default?.data) {
+            const { hash, ext } = strapiImages.default.data?.attributes || {};
             const filename = `${hash}${ext}`;
             return filename;
         }
