@@ -1,7 +1,5 @@
 import React, { FC, memo, useMemo } from 'react';
-import styled, { css } from 'styled-components';
-import { getDimension } from './get-dimension';
-import { MappedStrapiImage, StrNum } from './types';
+import { MappedStrapiImage } from './types';
 
 const _StrapiImage: FC<ComponentProps> = (props) => {
     const { mobileFilename, commonFilename, options, widthOnScreen } = props;
@@ -36,8 +34,7 @@ const _StrapiImage: FC<ComponentProps> = (props) => {
             <picture>
                 {mobileFilename && (
                     <>
-                        <StyledImage
-                            as="source"
+                        <source
                             type="image/webp"
                             media="(max-width: 768px)"
                             srcSet={createMobileSrcset({
@@ -47,8 +44,7 @@ const _StrapiImage: FC<ComponentProps> = (props) => {
                             })}
                             {...props}
                         />
-                        <StyledImage
-                            as="source"
+                        <source
                             media="(max-width: 768px)"
                             srcSet={createMobileSrcset({
                                 filename: mobileFilename,
@@ -59,13 +55,8 @@ const _StrapiImage: FC<ComponentProps> = (props) => {
                     </>
                 )}
 
-                <StyledImage
-                    as="source"
-                    type="image/webp"
-                    srcSet={mainWebpSrcSet}
-                    {...props}
-                />
-                <StyledImage src={defaultSrc} srcSet={mainSrcset} {...props} />
+                <source type="image/webp" srcSet={mainWebpSrcSet} {...props} />
+                <img src={defaultSrc} srcSet={mainSrcset} {...props} />
             </picture>
         </>
     );
@@ -74,13 +65,9 @@ const _StrapiImage: FC<ComponentProps> = (props) => {
 export const StrapiImage = memo(_StrapiImage);
 
 interface ComponentProps extends MappedStrapiImage {
-    $height?: StrNum;
-    $width?: StrNum;
     options?: string;
     widthOnScreen?: WidthOnScreen;
 }
-
-declare const _STRAPI_URL_: string;
 
 interface WidthOnScreen {
     mobile?: number;
@@ -171,15 +158,3 @@ const getDefaultSrc = (
 
     return `${host}/uploads/w_${commonWidthOnScreen}/${filename}`;
 };
-
-interface StyledImageAndSourceProps {
-    $height?: StrNum;
-    $width?: StrNum;
-}
-
-const StyledImage = styled.img<StyledImageAndSourceProps>`
-    ${({ $height, $width }) => css`
-        height: ${getDimension($height)};
-        width: ${getDimension($width)};
-    `}
-`;
