@@ -16,7 +16,10 @@ export {
     HtmlInput,
     StrapiImageFromRes,
     StrapiImageQueryFromRes,
-    MappedStrapiImage
+    MappedStrapiImage,
+    MappedStrapiListItem,
+    StrapiButton,
+    StrapiListItemFromRes
 } from './types';
 export { StrapiImage } from './strapi-image';
 export { mapStrapiImage } from './map-strapi-image';
