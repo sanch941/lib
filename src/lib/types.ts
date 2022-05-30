@@ -56,10 +56,19 @@ export interface StrapiImageFromRes {
     };
 }
 
-export interface StrapiListItem {
+export interface StrapiListItemFromRes {
     id?: number;
     name?: string;
     img?: StrapiImageFromRes;
+    description?: string;
+    my_id?: number;
+    related_id?: number;
+}
+
+export interface MappedStrapiListItem {
+    id?: number;
+    name?: string;
+    img?: MappedStrapiImage;
     description?: string;
     my_id?: number;
     related_id?: number;
