@@ -11,13 +11,12 @@ const _StrapiImage: FC<ComponentProps> = (props) => {
         options,
         widthOnScreen
     };
-    const optionComposedWithWebp = options
-        ? `format_webp,${options}`
-        : 'format_webp';
+    const optionComposedWithWebp = composeOptions('format_webp', options);
 
     const { mainSrcset, mainWebpSrcSet, defaultSrc } = useMemo(() => {
         const mainSrcset = createMainSrcset({
             filename: commonFilename,
+            options: composeOptions('q_90', options),
             ...commonParams
         });
 
@@ -86,6 +85,9 @@ interface ComponentProps extends MappedStrapiImage {
     options?: string;
     widthOnScreen?: WidthOnScreen;
 }
+
+const composeOptions = (optionToSet: string, options: string) =>
+    options ? `${optionToSet},${options}` : optionToSet;
 
 interface WidthOnScreen {
     mobile?: number;
@@ -174,7 +176,7 @@ const getDefaultSrc = (
     const { common } = widthOnScreen;
     const commonWidthOnScreen = Math.round(common);
 
-    return `${host}/uploads/w_${commonWidthOnScreen}/${filename}`;
+    return `${host}/uploads/w_${commonWidthOnScreen},q_90/${filename}`;
 };
 
 interface StyledImageAndSourceProps {
