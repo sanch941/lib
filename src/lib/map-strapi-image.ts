@@ -12,8 +12,8 @@ export const mapStrapiImage = (
     };
 
     const getCommonFilename = () => {
-        if (strapiImages?.default?.data) {
-            const { hash, ext } = strapiImages.default.data?.attributes || {};
+        if (strapiImages?.common?.data) {
+            const { hash, ext } = strapiImages.common.data?.attributes || {};
             const filename = `${hash}${ext}`;
             return filename;
         }
