@@ -55,3 +55,17 @@ export interface StrapiImageFromRes {
         data: StrapiImageQueryFromRes;
     };
 }
+
+export interface StrapiListItem {
+    id?: number;
+    name?: string;
+    img?: StrapiImageFromRes;
+    description?: string;
+    my_id?: number;
+    related_id?: number;
+}
+
+export interface StrapiButton {
+    id?: number;
+    name?: string;
+}
