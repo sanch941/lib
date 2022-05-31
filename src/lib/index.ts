@@ -23,3 +23,4 @@ export {
 } from './types';
 export { StrapiImage } from './strapi-image';
 export { mapStrapiImage } from './map-strapi-image';
+export { mergeArrByKey } from './merge-arr-by-key';
