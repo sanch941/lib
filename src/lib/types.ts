@@ -78,3 +78,8 @@ export interface StrapiButton {
     id?: number;
     name?: string;
 }
+
+export interface StrapiResponsiveRichTextEditor {
+    common: string;
+    mobile?: string;
+}
