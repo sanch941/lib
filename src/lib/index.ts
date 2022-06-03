@@ -4,7 +4,7 @@ export { Text, TextProps } from './text';
 export { Box, BoxProps } from './box';
 export { getDimension } from './get-dimension';
 export { IsMobile, IsDesktop } from './is-media';
-export { media } from './media';
+export { media, generateMediaProps } from './media';
 export { Portal } from './portal';
 export { makeTriangle } from './make-triangle';
 export { Collapsible } from './collapsible';

@@ -1,3 +1,5 @@
+import { css, FlattenSimpleInterpolation } from 'styled-components';
+
 const createBreakpoint = (
     direction: 'max-width' | 'min-width',
     width: number | string
@@ -9,7 +11,13 @@ const createBreakpoint = (
     return `@media (${direction}: ${setupWidth(width)})`;
 };
 
-const sizes = {
+type SizeNames = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'xxl';
+
+type Sizes = {
+    [key in SizeNames]: number;
+};
+
+const sizes: Sizes = {
     xs: 375,
     sm: 576,
     md: 768,
@@ -25,4 +33,31 @@ export const media = {
     lg: createBreakpoint('min-width', sizes.lg),
     xl: createBreakpoint('min-width', sizes.xl),
     xxl: createBreakpoint('min-width', sizes.xxl)
+};
+
+export type MediaSizes<T> = {
+    [key in SizeNames]?: T;
+};
+
+type GenerateMediaProps = (
+    props: {
+        [key in string]?: any;
+    },
+    getPropsFunc: (params: unknown) => FlattenSimpleInterpolation
+) => FlattenSimpleInterpolation;
+
+export const generateMediaProps: GenerateMediaProps = (props, getPropsFunc) => {
+    let result = css``;
+
+    Object.keys(sizes).forEach((key) => {
+        result = css`
+            ${result};
+
+            ${media[key]} {
+                ${getPropsFunc(props[key])}
+            }
+        `;
+    });
+
+    return result;
 };
