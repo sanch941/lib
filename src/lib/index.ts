@@ -26,3 +26,4 @@ export { StrapiImage } from './strapi-image';
 export { mapStrapiImage } from './map-strapi-image';
 export { mergeArrByKey } from './merge-arr-by-key';
 export { getQueryParams } from './get-query-params';
+export { FlexWrapContainer } from './flex-wrap-container';
