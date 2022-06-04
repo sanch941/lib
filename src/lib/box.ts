@@ -51,23 +51,18 @@ const getMargin = ({
     pLeft,
     pRight,
     padding
-}: Props) => {
-    return $margin
-        ? css`
-              margin: ${$margin};
-              padding: ${padding};
-          `
-        : css`
-              margin-top: ${getDimension($top)};
-              margin-left: ${getDimension($left)};
-              margin-right: ${getDimension($right)};
-              margin-bottom: ${getDimension($bottom)};
-              padding-top: ${getDimension(pTop)};
-              padding-left: ${getDimension(pLeft)};
-              padding-right: ${getDimension(pRight)};
-              padding-bottom: ${getDimension(pBottom)};
-          `;
-};
+}: Props) => css`
+    margin-top: ${getDimension($top)};
+    margin-left: ${getDimension($left)};
+    margin-right: ${getDimension($right)};
+    margin-bottom: ${getDimension($bottom)};
+    padding-top: ${getDimension(pTop)};
+    padding-left: ${getDimension(pLeft)};
+    padding-right: ${getDimension(pRight)};
+    padding-bottom: ${getDimension(pBottom)};
+    margin: ${$margin};
+    padding: ${padding};
+`;
 
 const getStyles = (props: ComponentProps = {}) => {
     const { $flex, jc, ai, $width, $height, fxw, fxd, bg, mih, mah } = props;
