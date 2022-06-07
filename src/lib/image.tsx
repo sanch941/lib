@@ -12,18 +12,22 @@ export const Image: FC<ComponentProps> = ({
         <picture>
             {mobileWebpUrl && (
                 <source
-                    src={mobileWebpUrl}
+                    srcSet={mobileWebpUrl}
                     type="image/webp"
                     media="(max-width: 768px)"
                     {...props}
                 />
             )}
             {mobileUrl && (
-                <source src={mobileUrl} media="(max-width: 768px)" {...props} />
+                <source
+                    srcSet={mobileUrl}
+                    media="(max-width: 768px)"
+                    {...props}
+                />
             )}
 
             {commonWebpUrl && (
-                <source src={commonWebpUrl} type="image/webp" {...props} />
+                <source srcSet={commonWebpUrl} type="image/webp" {...props} />
             )}
             <img
                 src={priority === 'common' ? commonUrl : mobileUrl}
