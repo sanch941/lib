@@ -1,14 +1,11 @@
 import styled, { css } from 'styled-components';
 import { getDimension } from './get-dimension';
-import { media } from './media';
+import { generateMediaProps, MediaSizes } from './media';
 import { StrNum } from './types';
 
 export const Box = styled.div<ComponentProps>`
     ${(props) => getStyles(props)};
-
-    ${media.sm} {
-        ${({ sm }) => getStyles(sm)};
-    }
+    ${(props) => generateMediaProps(props, getStyles)}
 `;
 
 interface Props {
@@ -34,7 +31,7 @@ interface Props {
     mah?: StrNum;
 }
 
-interface ComponentProps extends Props {
+interface ComponentProps extends Props, MediaSizes<Props> {
     sm?: Props;
 }
 
