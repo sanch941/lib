@@ -17,7 +17,7 @@ type Sizes = {
     [key in SizeNames]: number;
 };
 
-const sizes: Sizes = {
+export const sizes: Sizes = {
     xs: 375,
     sm: 576,
     md: 768,
