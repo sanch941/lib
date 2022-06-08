@@ -2,7 +2,21 @@ import styled, { css } from 'styled-components';
 import { getDimension } from './get-dimension';
 import { generateMediaProps, MediaSizes } from './media';
 
-const getStyles = ({ fz, lh, $color, fw, $width, ta, whs }: Props = {}) => css`
+export const Text = styled.p<ComponentProps>`
+    ${(props) => getStyles(props)};
+    ${(props) => generateMediaProps(props, getStyles)}
+`;
+
+const getStyles = ({
+    fz,
+    lh,
+    $color,
+    fw,
+    $width,
+    ta,
+    whs,
+    tt
+}: Props = {}) => css`
     font-size: ${getDimension(fz)};
     line-height: ${getDimension(lh)};
     color: ${$color};
@@ -10,11 +24,7 @@ const getStyles = ({ fz, lh, $color, fw, $width, ta, whs }: Props = {}) => css`
     width: ${getDimension($width)};
     text-align: ${ta};
     white-space: ${whs};
-`;
-
-export const Text = styled.p<ComponentProps>`
-    ${(props) => getStyles(props)};
-    ${(props) => generateMediaProps(props, getStyles)}
+    text-transform: ${tt};
 `;
 
 interface Props {
@@ -28,6 +38,7 @@ interface Props {
     $width?: number | string;
     ta?: string;
     whs?: string;
+    tt?: string;
 }
 export type TextProps = Props;
 

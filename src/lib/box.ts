@@ -20,8 +20,8 @@ interface Props {
     $margin?: string;
     padding?: string;
     $flex?: boolean;
-    jc?: 'flex-start' | 'center' | 'space-between' | 'flex-end';
-    ai?: 'flex-start' | 'center' | 'space-between' | 'flex-end';
+    jc?: 'flex-start' | 'center' | 'space-between' | 'flex-end' | 'stretch';
+    ai?: 'flex-start' | 'center' | 'space-between' | 'flex-end' | 'stretch';
     $width?: StrNum;
     fxw?: 'nowrap' | 'wrap' | 'wrap-reverse';
     $height?: StrNum;
