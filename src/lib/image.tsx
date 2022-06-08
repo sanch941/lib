@@ -12,7 +12,7 @@ export const Image: FC<ComponentProps> = ({
         <picture>
             {mobileWebpUrl && (
                 <source
-                    srcSet={mobileWebpUrl}
+                    srcSet={getSrcSet(mobileWebpUrl)}
                     type="image/webp"
                     media="(max-width: 768px)"
                     {...props}
@@ -20,17 +20,21 @@ export const Image: FC<ComponentProps> = ({
             )}
             {mobileUrl && (
                 <source
-                    srcSet={mobileUrl}
+                    srcSet={getSrcSet(mobileUrl)}
                     media="(max-width: 768px)"
                     {...props}
                 />
             )}
 
             {commonWebpUrl && (
-                <source srcSet={commonWebpUrl} type="image/webp" {...props} />
+                <source
+                    srcSet={getSrcSet(commonWebpUrl)}
+                    type="image/webp"
+                    {...props}
+                />
             )}
             <img
-                src={priority === 'common' ? commonUrl : mobileUrl}
+                src={priority === 'common' ? commonUrl['1x'] : mobileUrl['1x']}
                 alt=""
                 {...props}
             />
@@ -38,10 +42,23 @@ export const Image: FC<ComponentProps> = ({
     );
 };
 
+interface Resolutions {
+    '1x': string;
+    '2x'?: string;
+}
+
 interface ComponentProps {
-    commonUrl: string;
-    mobileUrl?: string;
-    commonWebpUrl?: string;
-    mobileWebpUrl?: string;
+    commonUrl: Resolutions;
+    mobileUrl?: Resolutions;
+    commonWebpUrl?: Resolutions;
+    mobileWebpUrl?: Resolutions;
     priority?: 'common' | 'mobile';
 }
+
+const getSrcSet = (resolutions: Resolutions): string => {
+    const resolutionsList: string[] = Object.keys(resolutions).map(
+        (key) => `${resolutions[key]} ${key}`
+    );
+    const srcSet = resolutionsList.join(', ');
+    return srcSet;
+};
