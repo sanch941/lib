@@ -20,7 +20,8 @@ export {
     MappedStrapiListItem,
     StrapiButton,
     StrapiListItemFromRes,
-    StrapiResponsiveRichTextEditorFromRes
+    StrapiResponsiveRichTextEditorFromRes,
+    SelectOnChange
 } from './types';
 export { StrapiImage } from './strapi-image';
 export { mapStrapiImage } from './map-strapi-image';

@@ -83,3 +83,7 @@ export interface StrapiResponsiveRichTextEditorFromRes {
     common: string;
     mobile?: string;
 }
+
+export type SelectOnChange = (
+    event: React.ChangeEvent<HTMLSelectElement>
+) => void;
