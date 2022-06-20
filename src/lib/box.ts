@@ -29,6 +29,8 @@ interface Props {
     fxd?: 'column' | 'column-reverse' | 'row' | 'row-reverse';
     mih?: StrNum;
     mah?: StrNum;
+    bdrs?: number;
+    bd?: string;
 }
 
 interface ComponentProps extends Props, MediaSizes<Props> {
@@ -62,7 +64,20 @@ const getMargin = ({
 `;
 
 const getStyles = (props: ComponentProps = {}) => {
-    const { $flex, jc, ai, $width, $height, fxw, fxd, bg, mih, mah } = props;
+    const {
+        $flex,
+        jc,
+        ai,
+        $width,
+        $height,
+        fxw,
+        fxd,
+        bg,
+        mih,
+        mah,
+        bdrs,
+        bd
+    } = props;
 
     return css`
         display: ${$flex && 'flex'};
@@ -76,6 +91,8 @@ const getStyles = (props: ComponentProps = {}) => {
         flex-direction: ${fxd};
         min-height: ${getDimension(mih)};
         max-height: ${getDimension(mah)};
+        border-radius: ${bdrs && `${bdrs}px`};
+        border: ${bd};
 
         ${getMargin(props)}
     `;
