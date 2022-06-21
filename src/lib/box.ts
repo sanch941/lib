@@ -8,6 +8,8 @@ export const Box = styled.div<ComponentProps>`
     ${(props) => generateMediaProps(props, getStyles)}
 `;
 
+Box.displayName = 'Box';
+
 interface Props {
     $top?: StrNum;
     $left?: StrNum;

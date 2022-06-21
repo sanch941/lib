@@ -7,6 +7,8 @@ export const Text = styled.p<ComponentProps>`
     ${(props) => generateMediaProps(props, getStyles)}
 `;
 
+Text.displayName = 'Text';
+
 const getStyles = ({
     fz,
     lh,
