@@ -20,8 +20,20 @@ interface Props {
     $margin?: string;
     padding?: string;
     $flex?: boolean;
-    jc?: 'flex-start' | 'center' | 'space-between' | 'flex-end' | 'stretch';
-    ai?: 'flex-start' | 'center' | 'space-between' | 'flex-end' | 'stretch';
+    jc?:
+        | 'flex-start'
+        | 'center'
+        | 'space-between'
+        | 'flex-end'
+        | 'stretch'
+        | 'space-around';
+    ai?:
+        | 'flex-start'
+        | 'center'
+        | 'space-between'
+        | 'flex-end'
+        | 'stretch'
+        | 'space-around';
     $width?: StrNum;
     fxw?: 'nowrap' | 'wrap' | 'wrap-reverse';
     $height?: StrNum;
@@ -29,7 +41,7 @@ interface Props {
     fxd?: 'column' | 'column-reverse' | 'row' | 'row-reverse';
     mih?: StrNum;
     mah?: StrNum;
-    bdrs?: number;
+    bdrs?: string;
     bd?: string;
 }
 
@@ -91,7 +103,7 @@ const getStyles = (props: ComponentProps = {}) => {
         flex-direction: ${fxd};
         min-height: ${getDimension(mih)};
         max-height: ${getDimension(mah)};
-        border-radius: ${bdrs && `${bdrs}px`};
+        border-radius: ${bdrs};
         border: ${bd};
 
         ${getMargin(props)}
