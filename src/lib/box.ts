@@ -4,6 +4,7 @@ import { generateMediaProps, MediaSizes } from './media';
 import { StrNum } from './types';
 
 export const Box = styled.div<ComponentProps>`
+    position: relative;
     ${(props) => getStyles(props)};
     ${(props) => generateMediaProps(props, getStyles)}
 `;
@@ -99,7 +100,6 @@ const getStyles = (props: ComponentProps = {}) => {
         align-items: ${ai};
         width: ${getDimension($width)};
         height: ${getDimension($height)};
-        position: relative;
         flex-wrap: ${fxw};
         background: ${bg};
         flex-direction: ${fxd};
