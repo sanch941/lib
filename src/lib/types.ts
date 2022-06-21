@@ -87,3 +87,5 @@ export interface StrapiResponsiveRichTextEditorFromRes {
 export type SelectOnChange = (
     event: React.ChangeEvent<HTMLSelectElement>
 ) => void;
+
+export type Loading = 'idle' | 'pending' | 'fulfilled';
