@@ -1,7 +1,7 @@
 {
   "name": "@sanch941/lib",
   "version": "4.6.2",
-  "description": "This lib contains helper functions",
+  "description": "Library of helpers and components to reuse between projects",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
@@ -19,14 +19,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/sanch941/webpack-boilerplate.git"
+    "url": "git+https://github.com/sanch941/lib.git"
   },
   "author": "sanch941",
   "license": "MIT",
-  "bugs": {
-    "url": "https://gitlab.com/sanch941/webpack-boilerplate/issues"
-  },
-  "homepage": "https://gitlab.com/sanch941/webpack-boilerplate#readme",
+  "homepage": "https://github.com/sanch941/lib#readme",
   "devDependencies": {
     "@babel/core": "^7.7.7",
     "@babel/plugin-transform-typescript": "^7.10.4",
