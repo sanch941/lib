@@ -6,10 +6,4 @@ node_modules
 build
 dist
 .env
-payservice
-payservice-paygram
-payservice-vertex
-payservice-mfo
-payservice-applepay
-payservice-card-linking
 /lib
