@@ -1,6 +1,6 @@
 {
   "name": "@sanch941/lib",
-  "version": "4.6.3",
+  "version": "4.6.4",
   "description": "Library of helpers and components to reuse between projects",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -15,7 +15,7 @@
     "library": "sanch941-configs-webpack library",
     "prepare": "yarn build",
     "version": "git add -A .",
-    "postversion": "git push origin develop"
+    "postversion": "git push github develop"
   },
   "repository": {
     "type": "git",
