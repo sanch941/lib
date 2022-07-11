@@ -29,3 +29,4 @@ export { mergeArrByKey } from './merge-arr-by-key';
 export { getQueryParams } from './get-query-params';
 export { FlexWrapContainer } from './flex-wrap-container';
 export { Image } from './image';
+export { Modal } from './modal';
