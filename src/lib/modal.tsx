@@ -1,16 +1,18 @@
 import React, { FC } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Portal } from './portal';
+import { HtmlDiv } from './types';
 
 export const Modal: FC<ComponentProps> = ({
     children,
     open,
-    onOverlayClick = () => ({})
+    onOverlayClick = () => ({}),
+    ...props
 }) => {
     return (
         <Portal>
             {open && (
-                <StyledContainer>
+                <StyledContainer {...props}>
                     {children} <StyledOverlay onClick={onOverlayClick} />
                 </StyledContainer>
             )}
@@ -18,7 +20,7 @@ export const Modal: FC<ComponentProps> = ({
     );
 };
 
-interface ComponentProps {
+interface ComponentProps extends HtmlDiv {
     open: boolean;
     onOverlayClick?: () => void;
 }
